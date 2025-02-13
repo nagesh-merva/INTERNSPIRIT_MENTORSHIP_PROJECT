@@ -22,6 +22,7 @@ function Register({ setUser }) {
       const response = await axios.post('http://127.0.0.1:5000/api/register', {
         email: formData.email,
         password: formData.password,
+        action: 'register'
       });
       if (response.data.success) {
         setUser(response.data.user);

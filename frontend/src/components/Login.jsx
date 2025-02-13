@@ -13,7 +13,11 @@ function Login({ setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/login', formData);
+      const response = await axios.post('http://127.0.0.1:5000/api/login', {
+        email: formData.email,
+        password: formData.password,
+        action: 'login'
+      });
       if (response.data.success) {
         setUser(response.data.user);
         navigate('/dashboard');
